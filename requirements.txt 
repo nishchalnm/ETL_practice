@@ -1,0 +1,15 @@
+boto3
+awscli
+pyspark==3.4.1
+pandas
+pyarrow
+fastparquet
+s3fs
+confluent-kafka
+requests
+pytest
+black
+flake8
+mypy
+jupyterlab
+python-snappy

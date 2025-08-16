@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  dev:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    environment:
+      - AWS_REGION=us-east-1
+    ports:
+      - "8888:8888"
+    depends_on:
+      - redpanda
+
+  redpanda:
+    image: vectorized/redpanda:latest
+    command: ["redpanda", "start", "--overprovisioned", "--smp", "1", "--memory", "1G", "--reserve-memory", "0M", "--node-id", "0", "--check=false"]
+    ports:
+      - "9092:9092"
+      - "9644:9644"
